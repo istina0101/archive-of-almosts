@@ -1,0 +1,349 @@
+:root {
+  --background: #f7f6f3;
+  --foreground: #121212;
+  --muted: #5f5a54;
+  --border: #d6d1ca;
+  --surface: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #1f4fa8;
+  outline-offset: 2px;
+}
+
+.kicker,
+.step-kicker,
+.archive-meta h2,
+.archive-meta h3,
+.collection-card h2,
+h1,
+h2,
+h3 {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+/* ─── Entrance ─── */
+.entrance {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  gap: 1rem;
+}
+
+.entrance h1 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 600;
+}
+
+.statement {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.collection-count {
+  margin-top: 1.5rem;
+  color: var(--muted);
+}
+
+/* ─── Buttons & nav ─── */
+.entrance-nav,
+.flow-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.quiet-button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 300ms ease, background-color 300ms ease;
+}
+
+.quiet-button.primary {
+  background: #1b1b1b;
+  color: #f7f7f7;
+  border-color: #1b1b1b;
+}
+
+.quiet-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ─── Step shells ─── */
+.step-shell,
+.collection-shell,
+.archive-view-shell {
+  max-width: 980px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 4.5rem 1.25rem;
+}
+
+.step-shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.step-progress {
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.step-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.step-content {
+  max-width: 720px;
+  display: grid;
+  gap: 1rem;
+  animation: stepFade 300ms ease;
+}
+
+@keyframes stepFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Form fields ─── */
+.field,
+.long-field {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+}
+
+.long-field {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.inline-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.radio-group {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* ─── Emotion grid ─── */
+.emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  transition: all 600ms ease;
+}
+
+.emotion-option {
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: left;
+  display: grid;
+  gap: 0.35rem;
+  cursor: pointer;
+  min-height: 94px;
+}
+
+.emotion-option.selected {
+  border-width: 2px;
+}
+
+/* ─── Collection ─── */
+.collection-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.collection-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  padding: 1rem;
+}
+
+/* ─── Archive card ─── */
+.archive-card {
+  position: relative;
+  border: 1px solid;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.6px, transparent 0.6px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.archive-story {
+  min-height: 260px;
+  border-bottom: 1px solid;
+  padding: 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.poetic {
+  width: 100%;
+}
+
+.poetic p {
+  margin: 0 0 0.4rem;
+}
+
+.poetic-fragmented {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.poetic-spiral {
+  max-width: 360px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.archive-meta {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.archive-meta h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.archive-era {
+  opacity: 0.85;
+}
+
+.archive-meta dl {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) 1fr;
+  row-gap: 0.4rem;
+}
+
+.archive-meta dt {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+}
+
+.archive-divider {
+  width: 120px;
+  height: 1px;
+}
+
+.archive-filed {
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* ─── Step 15 preview ─── */
+.preview-box {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+/* ─── Misc ─── */
+.warning {
+  background: #fff3d6;
+  border: 1px solid #efca76;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.empty-state {
+  margin-top: 2rem;
+  color: var(--muted);
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
